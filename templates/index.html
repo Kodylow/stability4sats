@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Stability AI</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #0f0;
+            font-family: monospace;
+        }
+
+        select,
+        button {
+            background-color: #000;
+            color: #0f0;
+            border: solid 1px #0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Stability 4 Sats</h1>
+    <form action="/v1/generation" method="POST">
+        <h2>Generate image from text</h2>
+        <form action="/v1/generation/text-to-image" method="POST">
+            <label for="engine">Select an engine:</label>
+            <select id="engine" name="engine_id">
+                {{range .Engines}}
+                <option value="{{.Id}}">{{.Name}}</option>
+                {{end}}
+            </select>
+            <label for="textPrompt">Text:</label>
+            <input type="text" id="textPrompt" name="textPrompt" required>
+            <button type="submit">Generate Image from Text</button>
+        </form>
+        <button type="submit">Generate</button>
+    </form>
+</body>
+
+</html>
